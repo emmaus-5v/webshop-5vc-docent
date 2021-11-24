@@ -8,9 +8,29 @@ CREATE TABLE products (
   code VARCHAR(15),
   name VARCHAR(255),
   description TEXT,
-  price NUMERIC(10, 2)
+  price NUMERIC(10, 2),
+  genre_id INTEGER
 );
 
+
+DROP TABLE IF EXISTS genre; 
+CREATE TABLE genre (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(25)
+);
+
+DROP TABLE IF EXISTS artiest; 
+CREATE TABLE artiest (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name VARCHAR(100)
+);
+
+DROP TABLE IF EXISTS product_artiest; 
+CREATE TABLE product_artiest (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  product_id INTEGER,
+  artiest_id INTEGER
+);
 
 --
 -- populate with data
@@ -21,28 +41,24 @@ CREATE TABLE products (
 -- want different data? check: https://www.mockaroo.com/910b6c20
 --
 
-insert into products (name, description, code, price) values ('English Film', 'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.
+insert into products (name, description, code, price, genre_id) values ('English Film', 'Mauris ..', '816905633-1', 10.5, 1);
+insert into products (name, description, code, price, genre_id) values ('Post Mortem', 'Nulla ...', '816905633-2', 11, 1);
+insert into products (name, description, code, price, genre_id) values ('Scarlet and the Black, The', 'Pellentesque...', '816905633-3', 13.5, 3);
+insert into products (name, description, code, price, genre_id) values ('Aquí llega Condemor, el pecador de la pradera', 'Duis b...', '816905633-4', 13.5, 3);
+insert into products (name, description, code, price, genre_id) values ('Kiss for Corliss, A (Almost a Bride)', 'Nulla ut...','816905633-5', 14, 2);
 
-Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.
+insert into genre (name) values ('Genre1');
+insert into genre (name) values ('Genre2');
+insert into genre (name) values ('Genre3');
 
-In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.', '816905633-0', 10.5);
-insert into products (name, description, code, price) values ('Post Mortem', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.
+insert into artiest (name) values ('Artiest1');
+insert into artiest (name) values ('Artiest2');
+insert into artiest (name) values ('Artiest3');
 
-Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.
-
-Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.', '077030122-3', 11);
-insert into products (name, description, code, price) values ('Scarlet and the Black, The', 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.', '445924201-X', 13.5);
-insert into products (name, description, code, price) values ('Aquí llega Condemor, el pecador de la pradera', 'Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.
-
-In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.
-
-Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.', '693155505-7', 13.5);
-insert into products (name, description, code, price) values ('Kiss for Corliss, A (Almost a Bride)', 'Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.', '686928463-6', 14);
-insert into products (name, description, code, price) values ('Velvet Goldmine', 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.
-
-Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', '492662523-7', 14);
-
+insert into product_artiest (product_id, artiest_id) values (1, 1);
+insert into product_artiest (product_id, artiest_id) values (1, 2);
+insert into product_artiest (product_id, artiest_id) values (2, 1);
+insert into product_artiest (product_id, artiest_id) values (2, 3);
+insert into product_artiest (product_id, artiest_id) values (3, 1);
+insert into product_artiest (product_id, artiest_id) values (4, 2);
+insert into product_artiest (product_id, artiest_id) values (5, 3);
